@@ -1,17 +1,26 @@
-const Koa = require('koa');
-const koaSend = require('koa-send');
-const statics = require('koa-static');
+const express = require('express');
+const app = express();
+const http = require('http');
 const socket = require('socket.io');
 
-const path = require('path');
-const http = require('http');
-
 const port = 3007;
-const app = new Koa();
-
-const httpServer = http.createServer().listen(port, () => {
-    console.log('httpServer app started at port ...' + port);
+app.all('*', function (req, res, next) {
+    if (!req.get('Origin')) return next();
+    // use "*" here to accept any origin
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET');
+    res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+    // res.set('Access-Control-Allow-Max-Age', 3600);
+    if ('OPTIONS' == req.method) return res.send(200);
+    next();
 });
+
+app.get('/hs', (req, res) => {
+    res.send('<p style="color:red">服务已启动</p>');
+})
+const httpServer = app.listen(3000, () => {
+    console.log('listen:3000');
+})
 const options = {
     ioOptions: {
         pingTimeout: 10000,
