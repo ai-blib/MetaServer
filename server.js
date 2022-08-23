@@ -25,7 +25,13 @@ const options = {
     ioOptions: {
         pingTimeout: 10000,
         pingInterval: 5000,
-    }
+    },
+    origins:["127.0.0.1:8000",'localhost:3003'],
+    serveClient: false,
+    // below are engine.IO options
+    pingInterval: 20000,
+    pingTimeout: 5000,
+    cookie: false
 };
 const httpIo = socket(httpServer, options);
 const rooms = {};
