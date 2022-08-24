@@ -33,14 +33,7 @@ const options = {
     pingTimeout: 5000,
     cookie: false
 };
-const httpIo = socket(httpServer, {
-    allowEIO3: true,
-    cors: {
-        origin: ['http://localhost:8080', 'http://localhost:3003','https://mixverse.vercel.app'],
-        methods: ["GET", "POST"],
-        credentials: true
-    }
-});
+const httpIo = socket(httpServer, {cors:true});
 const rooms = {};
 const socks = {};
 const httpConnectIoCallBack = (sock) => {
