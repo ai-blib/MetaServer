@@ -19,7 +19,7 @@ app.get('/hs', (req, res) => {
     res.send('<p style="color:red">服务已启动</p>');
 })
 const httpServer = app.listen(3000, () => {
-    console.log('listen:3000');
+    console.log('listen:30001');
 })
 const options = {
     ioOptions: {
