@@ -50,7 +50,9 @@ var generateRtmToken = function(req, resp) {
     //resp.header("Access-Control-Allow-Origin", "http://ip:port")
     return resp.json({ 'key': key }).send();
 };
-
+app.get('/hs',(req, resp)=>{
+    return resp.send('success')
+})
 app.get('/rtcToken', generateRtcToken);
 app.get('/rtmToken', generateRtmToken);
 
