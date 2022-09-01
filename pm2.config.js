@@ -1,9 +1,8 @@
 module.exports = {
   apps : [{
-    name: "app",
+    name: "token server",
     script: "server.js",
     instances: "max",
-    exec_mode: "cluster",
     env: {
       NODE_ENV: "development",
     },
