@@ -51,7 +51,7 @@ var generateRtmToken = function(req, resp) {
     return resp.json({ 'key': key }).send();
 };
 app.get('/hs',(req, resp)=>{
-    return resp.send('success')
+    return resp.send('success Token api')
 })
 app.get('/rtcToken', generateRtcToken);
 app.get('/rtmToken', generateRtmToken);
